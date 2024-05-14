@@ -1,11 +1,13 @@
 #ifndef DataGeneratorFunctions_h
 #define DataGeneratorFunctions_h
 #include "DetSys.h"
-const int es = 1126; // efficiency of scintillators X100
-const int c = 215;   // probability of cross-talk X100
-const int et = 4743; // total efficiency of the set-up X100
-const int N = 25;    // number of detectors
-
+// const int es = 1126; // efficiency of scintillators X100
+// const int c = 215;   // probability of cross-talk X100
+// const int et = 4743; // total efficiency of the set-up X100
+const int N = 23; // number of detectors
+const int es = 1035;
+const int c = 200;
+const int et = 4363;
 void generate(vector<int> &M1, vector<int> &M2)
 {
     int v1, v2, v3;
@@ -88,8 +90,8 @@ void pileuprejection(vector<int> &M1, vector<int> &M2)
     {
         if (B.find(i) == B.end())
         {
-            M1.push_back(i % 25);
-            M2.push_back(i / 25);
+            M1.push_back(i % N);
+            M2.push_back(i / N);
         }
     }
 }
@@ -108,8 +110,8 @@ void pileupsumpeak(vector<int> &M1, vector<int> &M2)
         M2.clear();
         for (int i : A)
         {
-            M1.push_back(i % 25);
-            M2.push_back(i / 25);
+            M1.push_back(i % N);
+            M2.push_back(i / N);
         }
     }
 }
